@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% set title = 'Overview' %}
+{% block body %}
+  <h1>Welcome</h1>
+
+  <p>
+  psphere provides native Python bindings for the vSphere Web Services SDK
+  (formerly known as VMware Infrastructure SDK).
+
+  The project is in its early phases but can already perform most query
+  operations and virtual machine creation.
+  </p>
+
+  <p>
+  psphere is in no way affiliated with VMware Inc.
+  </p>
+
+  <h2>Documentation</h2>
+
+  <table class="contentstable" align="center" style="margin-left: 30px"><tr>
+    <td width="50%">
+      <p class="biglink"><a class="biglink" href="{{ pathto("intro") }}">Getting Started</a><br/>
+         <span class="linkdescr">overview of basic tasks</span></p>
+      <p class="biglink"><a class="biglink" href="{{ pathto("contents") }}">User Guide</a><br/>
+         <span class="linkdescr">high level usage for end users</span></p>
+      <p class="biglink"><a class="biglink" href="{{ pathto("search") }}">Search page</a><br/>
+         <span class="linkdescr">search the documentation</span></p>
+    </td>
+    <td width="50%">
+      <p class="biglink">&nbsp;<br/>
+         <span class="linkdescr">&nbsp;</span></p>
+      <p class="biglink"><a class="biglink" href="{{ pathto("api") }}">API Reference</a><br/>
+         <span class="linkdescr">low level usage</span></p>
+      <p class="biglink"><a class="biglink" href="{{ pathto("genindex") }}">General Index</a><br/>
+         <span class="linkdescr">all functions, classes, terms</span></p>
+    </td></tr>
+  </table>
+
+  <!--
+  <p>
+    You can also download PDF versions of the psphere documentation:
+    a <a href="http://jkinred.bitbucket.org/psphere/psphere.pdf">version</a> generated from
+    the LaTeX psphere produces, and
+    a <a href="http://jkinred.bitbucket.org/psphere/psphere-rst2pdf.pdf">version</a> generated
+    by rst2pdf.
+  </p>
+  -->
+
+  <h2>Get psphere</h2>
+  <p>
+    psphere is available as an <a
+    href="http://peak.telecommunity.com/DevCenter/EasyInstall">easy-install</a>able
+    package on the <a href="http://pypi.python.org/pypi/psphere">Python Package
+    Index</a>.
+  </p>
+
+  <h2>Contribute</h2>
+  <p>The code can be found in a Mercurial repository, at <a href="http://bitbucket.org/jkinred/psphere/" target="_blank">my bitbucket page.</a></p>
+  <p>
+  Get in touch via bitbucket if you think that you can contribute to psphere.
+  This is my first Python and open-source project so I would appreciate any
+  feedback or advice!
+  </p>
+{% endblock %}
