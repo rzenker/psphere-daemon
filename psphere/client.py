@@ -48,8 +48,8 @@ from suds.options import Options
 from suds.properties import Unskin
 from copy import deepcopy
 
-CLIENT = Client(server="127.0.0.1", username='unknown1245', password='unknown1245', init_clone=True)
-
+CLIENT = None
+# initialized at bottom
 
 class Client(suds.client.Client):
     """A client for communicating with a VirtualCenter/ESX/ESXi server
@@ -103,7 +103,7 @@ class Client(suds.client.Client):
             print("FATAL: wsdl_location must be \"local\" or \"remote\"")
             sys.exit(1)
         # Init the base class
-        if clone:
+        if clone and not init_clone:
             cloneme = CLIENT
             self.sd=cloneme.sd
             self.options = Options()
@@ -665,3 +665,5 @@ class Client(suds.client.Client):
         logger.debug("Completed creating class in find_entity_view")
         #view.update_view_data(properties=properties)
         return view
+
+CLIENT = Client(server="127.0.0.1", username='unknown1245', password='unknown1245', init_clone=True)
