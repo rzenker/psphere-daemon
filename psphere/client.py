@@ -48,6 +48,8 @@ from suds.options import Options
 from suds.properties import Unskin
 from copy import deepcopy
 
+CLIENT = Client(server="127.0.0.1", username='unknown1245', password='unknown1245', init_clone=True)
+
 
 class Client(suds.client.Client):
     """A client for communicating with a VirtualCenter/ESX/ESXi server
@@ -68,7 +70,7 @@ class Client(suds.client.Client):
 
     """
     def __init__(self, server=None, username=None, password=None,
-                 wsdl_location="local", timeout=30, init_clone=False, clone=None):
+                 wsdl_location="local", timeout=30, init_clone=False, clone=True):
         #self._init_logging()
         self._logged_in = False
         if server is None:
@@ -102,14 +104,15 @@ class Client(suds.client.Client):
             sys.exit(1)
         # Init the base class
         if clone:
-            self.sd=clone.sd
+            cloneme = CLIENT
+            self.sd=cloneme.sd
             self.options = Options()
             cp = Unskin(self.options)
-            mp = Unskin(clone.options)
+            mp = Unskin(cloneme.options)
             cp.update(deepcopy(mp))
-            self.wsdl = clone.wsdl
-            self.factory = clone.factory
-            self.service = ServiceSelector(self, clone.wsdl.services)
+            self.wsdl = cloneme.wsdl
+            self.factory = cloneme.factory
+            self.service = ServiceSelector(self, cloneme.wsdl.services)
             self.messages = dict(tx=None, rx=None)
         else:
             try:
